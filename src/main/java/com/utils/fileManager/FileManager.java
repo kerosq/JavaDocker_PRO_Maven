@@ -6,6 +6,9 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.List;
 
+import com.utils.fileManager.factory.LeeFichero;
+import com.utils.fileManager.interfaces.IFichero;
+
 import lombok.Data;
 
 @Data
@@ -25,6 +28,13 @@ public class FileManager {
 		this.f = new File(Nombrefichero);
 	}
 
+	public FileManager() {
+	}
+	
+	public IFichero LeerFichero(String path) {
+		return new LeeFichero(path);
+	}
+	
 	public void CrearFichero(String NombreFichero) {
 
 		try {

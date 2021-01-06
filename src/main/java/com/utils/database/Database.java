@@ -11,17 +11,19 @@ import java.util.Properties;
 
 public class Database {
 
-	public IDatabase getConexion(String path, String motor) {
+	public IDatabase getConexion(String path) {
 
-		if (motor.equalsIgnoreCase("PG")) {
-			return new ConexionPG(LeerProperties(path));
+		Properties properties = LeerProperties(path);
+		
+		if (properties.getProperty("MOTOR").equalsIgnoreCase("PG")) {
+			return new ConexionPG(properties);
 		} else {
 			return new ConexionVacia();
 		}
 
 	}
 
-	public static Properties LeerProperties(String path) {
+	private Properties LeerProperties(String path) {
 
 		FileInputStream fis = null;
 		Properties prop = null;
