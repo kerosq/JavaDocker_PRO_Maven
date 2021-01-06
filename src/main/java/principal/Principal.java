@@ -1,29 +1,29 @@
 package principal;
 
-import fileManager.FileManager;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.Properties;
+
+import com.utils.database.Database;
+import com.utils.database.interfaces.IDatabase;
 
 public class Principal {
 
 	public static void main(String[] args) {
+		
+	Database fabrica = new Database();
+	Properties properties = new Properties();
 
-		String fichero = "hola.dat";
-		FileManager Archivo = new FileManager(fichero);
+    properties.setProperty("DATABASE_DRIVER","org.postgresql.Driver");
+    properties.setProperty("DATABASE_URL","jdbc:postgresql://localhost:5432/Athena");
+    properties.setProperty("user", "admin_db");
+    properties.setProperty("password", "admin_12345678");
+    properties.setProperty("MAX_POOL","250");
+    properties.setProperty("MOTOR", "POSTGRE");
 
-		Archivo.CrearFichero(fichero);
-		System.out.println("Nombre fichero: " + Archivo.getNombreFichero());
-		System.out.println("PATH: " + Archivo.getPathFichero());
-
-		List<String[]> lista = new ArrayList<String[]>();
-		String[] registro = new String[3];
-		registro[0] = "hola kevin";
-		registro[1] = "como estas";
-		registro[2] = "todo bien?";
-
-		lista.add(registro);
-		Archivo.EscribirArchivo(lista);
+    IDatabase cx1 = fabrica.getConexion(properties);
+    cx1.Connect();
+    cx1.Disconnect();
+		
 	}
 
 }

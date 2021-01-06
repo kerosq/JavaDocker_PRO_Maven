@@ -14,9 +14,14 @@ public class FileManager {
 	File f;
 	FileWriter flwriter;
 
-	public FileManager(String pNombrefichero) {
+	/**
+	 * 
+	 * @param Path Ruta fichero
+	 * @param Nombrefichero Nombre del fichero
+	 */
+	public FileManager(String Path, String Nombrefichero) {
 
-		this.f = new File(pNombrefichero);
+		this.f = new File(Nombrefichero);
 
 	}
 
@@ -64,6 +69,7 @@ public class FileManager {
 				}
 
 			}
+			
 
 			bfwriter.close();
 

@@ -1,0 +1,14 @@
+{
+    "Servers": {
+        "Postgres": {
+            "Name": "PostgreSQL 12",
+            "Port": 5432,
+            "Group": "Servers",
+            "SSLMode": "prefer",
+            "Username": "postgres",
+            "Host": "db",
+			"Host2": "HOST.DOCKER.INTERNAL",
+            "MaintenanceDB": "postgres"
+        }
+    }
+}
