@@ -35,15 +35,19 @@ public class ConexionPG implements IDatabase {
         this.DATABASE_DRIVER = properties.getProperty("DATABASE_DRIVER");
         this.DATABASE_URL = properties.getProperty("DATABASE_URL");
         this.MAX_POOL = properties.getProperty("MAX_POOL");
-
+        this.USERNAME = properties.getProperty("user");
+        this.PASSWORD = properties.getProperty("password");
+        
         this.properties.setProperty("user", properties.getProperty("user"));
         this.properties.setProperty("password", properties.getProperty("password"));
+        
+        System.out.println(this.toString());
     }
 
     @Override
     public Connection Connect() {
         System.out.println("Conectando con PG");
-
+        
         if (this.connection == null) {
             try {
                 Class.forName(this.getDATABASE_DRIVER());
@@ -68,6 +72,13 @@ public class ConexionPG implements IDatabase {
             }
         }
     }
+
+	@Override
+	public String toString() {
+		return "Datos Conexión [DATABASE_DRIVER=" + DATABASE_DRIVER + ", DATABASE_URL=" + DATABASE_URL + ", USERNAME="
+				+ USERNAME + ", PASSWORD=" + PASSWORD + "]";
+	}
+
 
 
 }

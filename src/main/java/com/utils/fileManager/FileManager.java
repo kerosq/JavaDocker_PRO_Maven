@@ -1,4 +1,4 @@
-package fileManager;
+package com.utils.fileManager;
 
 import java.io.BufferedWriter;
 import java.io.File;
@@ -6,11 +6,13 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.List;
 
+import lombok.Data;
+
+@Data
 public class FileManager {
 
 	private String NombreFichero;
 	private String PathFichero;
-
 	File f;
 	FileWriter flwriter;
 
@@ -20,9 +22,7 @@ public class FileManager {
 	 * @param Nombrefichero Nombre del fichero
 	 */
 	public FileManager(String Path, String Nombrefichero) {
-
 		this.f = new File(Nombrefichero);
-
 	}
 
 	public void CrearFichero(String NombreFichero) {
@@ -67,10 +67,8 @@ public class FileManager {
 					bfwriter.write(lista.get(i)[j]);
 					bfwriter.newLine();
 				}
-
 			}
 			
-
 			bfwriter.close();
 
 		} catch (IOException e) {
@@ -98,7 +96,6 @@ public class FileManager {
 					bfwriter.write(lista.get(i)[j]);
 					bfwriter.newLine();
 				}
-
 			}
 
 			bfwriter.close();
@@ -116,23 +113,5 @@ public class FileManager {
 		}
 	}
 
-	/**
-	 * @return the nombreFichero
-	 */
-	public String getNombreFichero() {
-		return NombreFichero;
-	}
-
-	/**
-	 * @return the pathFichero
-	 */
-	public String getPathFichero() {
-		return PathFichero;
-	}
-
-	@Override
-	public String toString() {
-		return "FileManager [NombreFichero=" + this.NombreFichero + ", PathFichero=" + this.PathFichero + "]";
-	}
 
 }

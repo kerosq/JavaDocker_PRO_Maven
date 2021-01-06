@@ -8,12 +8,12 @@ public class ConexionVacia implements IDatabase {
 
     @Override
     public Connection Connect() {
-        System.out.println("Conectando... NO SE ESPECIFICÓ PROVEEDOR");
+        System.out.println("Conectando... NO SE ESPECIFICO PROVEEDOR");
         return null;
     }
 
     @Override
     public void Disconnect() {
-        System.out.println("Desconectando...NO SE ESPECIFICÓ PROVEEDOR");
+        System.out.println("Desconectando...NO SE ESPECIFICO PROVEEDOR");
     }
 }
