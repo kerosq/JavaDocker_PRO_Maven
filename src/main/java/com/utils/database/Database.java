@@ -3,17 +3,21 @@ package com.utils.database;
 import com.utils.database.factory.ConexionPG;
 import com.utils.database.factory.ConexionVacia;
 import com.utils.database.interfaces.IDatabase;
+import com.utils.fileManager.FileManager;
 
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.IOException;
 import java.util.Properties;
 
 public class Database {
+	
+	private FileManager file;
+	
+	public Database (String Path, String Nombrefichero) {
+		file = new FileManager(Path,Nombrefichero);
+	}
+	
+	public IDatabase getConexion() {
 
-	public IDatabase getConexion(String path) {
-
-		Properties properties = LeerProperties(path);
+		Properties properties = file.LeerFichero().Properties();
 		
 		if (properties.getProperty("MOTOR").equalsIgnoreCase("PG")) {
 			return new ConexionPG(properties);
@@ -23,27 +27,5 @@ public class Database {
 
 	}
 
-	private Properties LeerProperties(String path) {
-
-		FileInputStream fis = null;
-		Properties prop = null;
-		try {
-			fis = new FileInputStream(path);
-			prop = new Properties();
-			prop.load(fis);
-		} catch (FileNotFoundException fnfe) {
-			fnfe.printStackTrace();
-		} catch (IOException ioe) {
-			ioe.printStackTrace();
-		} finally {
-			try {
-				fis.close();
-			} catch (IOException e) {
-				e.printStackTrace();
-			}
-		}
-		return prop;
-
-	}
 
 }

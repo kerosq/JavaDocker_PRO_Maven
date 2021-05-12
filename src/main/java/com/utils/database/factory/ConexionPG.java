@@ -41,7 +41,6 @@ public class ConexionPG implements IDatabase {
         this.properties.setProperty("user", properties.getProperty("user"));
         this.properties.setProperty("password", properties.getProperty("password"));
         
-        System.out.println(this.toString());
     }
 
     @Override

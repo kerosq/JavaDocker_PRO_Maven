@@ -10,7 +10,7 @@ import com.utils.fileManager.interfaces.IFichero;
 public class LeeFichero implements IFichero {
 
 	
-	public Properties prop_fichero;
+	private Properties prop_fichero;
 	private String path;
 	
 	public LeeFichero(String path) {
@@ -18,18 +18,12 @@ public class LeeFichero implements IFichero {
 	}
 	
 	@Override
-	public Properties LeerFicheros() {
+	public Properties Properties() {
 		
-		return this.LeerProperties(this.path);
-		
-	}
-
-	public Properties LeerProperties(String path) {
-
 		FileInputStream fis = null;
 		this.prop_fichero = null;
 		try {
-			fis = new FileInputStream(path);
+			fis = new FileInputStream(this.path);
 			this.prop_fichero = new Properties();
 			this.prop_fichero.load(fis);
 		} catch (FileNotFoundException fnfe) {
@@ -44,9 +38,8 @@ public class LeeFichero implements IFichero {
 			}
 		}
 		return this.prop_fichero;
-
+		
 	}
-	
 	
 	
 	@Override
