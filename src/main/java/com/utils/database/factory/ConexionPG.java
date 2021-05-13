@@ -32,7 +32,7 @@ public class ConexionPG implements IDatabase {
     public ConexionPG(Properties properties) {
         this.properties = new Properties();
        
-        this.DATABASE_DRIVER = properties.getProperty("DATABASE_DRIVER");
+         this.DATABASE_DRIVER = properties.getProperty("DATABASE_DRIVER");
         this.DATABASE_URL = properties.getProperty("DATABASE_URL");
         this.MAX_POOL = properties.getProperty("MAX_POOL");
         this.USERNAME = properties.getProperty("user");
